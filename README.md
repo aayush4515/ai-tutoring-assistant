@@ -78,3 +78,14 @@ root/
 - Advised by **Dr. Jensen** (Computer Science Department)
 
 - Inspired by real student challenges in CS I and CS II courses
+
+---
+
+## 📬 Contact
+**Aayush Acharya**
+📧 aayushacharya1545@gmail.com
+🔗 linkedin.com/in/aayush4515
+
+
+
+
