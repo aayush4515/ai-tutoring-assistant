@@ -4,22 +4,29 @@ import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-const StreamingMessage = ({ content, onComplete }) => {
+const StreamingMessage = ({ content, onComplete, shouldStop }) => {
   const [displayedContent, setDisplayedContent] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isStopped, setIsStopped] = useState(false);
 
   useEffect(() => {
-    if (currentIndex < content.length) {
+    if (shouldStop && !isStopped) {
+      setIsStopped(true);
+      onComplete();
+      return;
+    }
+
+    if (currentIndex < content.length && !isStopped) {
       const timer = setTimeout(() => {
         setDisplayedContent(prev => prev + content[currentIndex]);
         setCurrentIndex(prev => prev + 1);
       }, 3.2); // Adjust speed here (lower = faster)
 
       return () => clearTimeout(timer);
-    } else {
+    } else if (currentIndex >= content.length && !isStopped) {
       onComplete();
     }
-  }, [currentIndex, content, onComplete]);
+  }, [currentIndex, content, onComplete, shouldStop, isStopped]);
 
   // Custom renderer for code blocks and tables
   const renderers = {

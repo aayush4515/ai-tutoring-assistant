@@ -6,7 +6,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { User, Bot, Info } from 'lucide-react';
 
-const Message = ({ message, isStreaming = false, onStreamComplete }) => {
+const Message = ({ message, isStreaming = false, onStreamComplete, shouldStopStreaming = false }) => {
   const { type, content, timestamp, isError } = message;
 
   // Custom renderer for code blocks
@@ -199,7 +199,7 @@ const Message = ({ message, isStreaming = false, onStreamComplete }) => {
           ) : (
             isStreaming ? (
             <div className={`prose prose-sm max-w-none ${isError ? 'text-red-800' : 'text-gray-800'} prose-p:mb-6 prose-headings:mb-4 prose-headings:mt-8 prose-headings:font-semibold prose-ul:mb-6 prose-ol:mb-6 prose-li:mb-2 prose-pre:mb-6 prose-blockquote:mb-6 prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-strong:font-semibold prose-table:my-6 prose-hr:my-8 prose-hr:border-gray-300`}>
-              <StreamingMessage content={content} onComplete={onStreamComplete} />
+              <StreamingMessage content={content} onComplete={onStreamComplete} shouldStop={shouldStopStreaming} />
             </div>
             ) : (
               <div className={`prose prose-sm max-w-none ${isError ? 'text-red-800' : 'text-gray-800'} prose-p:mb-6 prose-ul:mb-6 prose-ol:mb-6 prose-li:mb-2 prose-pre:mb-6 prose-pre:mt-4 prose-blockquote:mb-6 prose-blockquote:mt-4 prose-table:my-6 prose-strong:font-semibold prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono`}>

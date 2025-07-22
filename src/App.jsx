@@ -10,6 +10,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [streamingMessageId, setStreamingMessageId] = useState(null);
   const [abortController, setAbortController] = useState(null);
+  const [shouldStopStreaming, setShouldStopStreaming] = useState(false);
   const messagesEndRef = useRef(null);
 
   // Auto-scroll to bottom when new messages are added
@@ -189,6 +190,7 @@ function App() {
   // Handle streaming completion
   const handleStreamComplete = () => {
     setStreamingMessageId(null);
+    setShouldStopStreaming(false);
   };
 
   // Handle stop button click
@@ -196,7 +198,9 @@ function App() {
     if (abortController) {
       abortController.abort();
     }
-    setStreamingMessageId(null);
+    if (streamingMessageId) {
+      setShouldStopStreaming(true);
+    }
   };
 
   // Handle starter prompt click
@@ -252,6 +256,7 @@ function App() {
                 isLoading={isLoading}
                 streamingMessageId={streamingMessageId}
                 onStreamComplete={handleStreamComplete}
+                shouldStopStreaming={shouldStopStreaming}
               />
               <div ref={messagesEndRef} />
             </>

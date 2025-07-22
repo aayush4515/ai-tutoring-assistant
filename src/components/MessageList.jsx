@@ -1,7 +1,7 @@
 import Message from './Message';
 import LoadingSpinner from './LoadingSpinner';
 
-const MessageList = ({ messages, isLoading, streamingMessageId, onStreamComplete }) => {
+const MessageList = ({ messages, isLoading, streamingMessageId, onStreamComplete, shouldStopStreaming }) => {
   return (
     <div className="space-y-4">
       {messages.map((message) => (
@@ -10,6 +10,7 @@ const MessageList = ({ messages, isLoading, streamingMessageId, onStreamComplete
           message={message} 
           isStreaming={message.id === streamingMessageId}
           onStreamComplete={onStreamComplete}
+          shouldStopStreaming={shouldStopStreaming && message.id === streamingMessageId}
         />
       ))}
       
