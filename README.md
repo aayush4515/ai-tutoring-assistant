@@ -1,4 +1,5 @@
-# 🧠 AI Tutoring Assistant — Python to C++ Transition                                                      [![Live Site](https://img.shields.io/badge/Live%20Demo-ai--tutoring--assistant-blue?style=flat-square&logo=vercel)](https://guileless-sorbet-1bf0df.netlify.app/)
+# 🧠 AI Tutoring Assistant — Python to C++ Transition                                                    
+[![Live Site](https://img.shields.io/badge/Live%20Demo-ai--tutoring--assistant-blue?style=flat-square&logo=vercel)](https://guileless-sorbet-1bf0df.netlify.app/)
 
 > A GPT-powered chatbot designed to support students transitioning from Python to C++, developed as part of Elmhurst University’s **Honors Summer Research Fellowship**.
 
