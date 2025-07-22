@@ -10,7 +10,7 @@ The AI Tutoring Assistant is an intelligent chatbot that guides students through
 
 Built using **OpenAI's GPT API**, **React**, **FastAPI**, and **TailwindCSS**, the assistant provides an educational, non-cheating environment aligned with Elmhurst University's CS curriculum for transfer and introductory-level students.
 
-👉 **Try it live:** [](guileless-sorbet-1bf0df.netlify.app)
+👉 **Try it live:** [guileless-sorbet-1bf0df.netlify.app](guileless-sorbet-1bf0df.netlify.app)
 
 ---
 
