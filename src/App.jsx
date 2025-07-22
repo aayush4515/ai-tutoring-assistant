@@ -254,7 +254,6 @@ function App() {
                 <StarterPrompts onPromptClick={handleStarterPromptClick} />
               </div>
             </div>
-          </div>
           ) : (
             <>
               <MessageList 
