@@ -271,20 +271,19 @@ function App() {
         {/* Input Area */}
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-4">
           <div className="max-w-4xl mx-auto">
-          <div className="relative">
-            {/* Chat Input */}
-            <ChatInput 
-              onSendMessage={handleSendMessage}
-              disabled={isLoading}
-              onStop={handleStop}
-              canStop={!!abortController || !!streamingMessageId}
-              onStop={handleStop}
-              canStop={!!abortController || !!streamingMessageId}
-            />
-            
-            {/* File Upload Icon */}
-            <div className="absolute bottom-4 left-2">
-              <FileUploadIcon onFileUpload={handleFileUpload} />
+            <div className="relative">
+              {/* Chat Input */}
+              <ChatInput 
+                onSendMessage={handleSendMessage}
+                disabled={isLoading}
+                onStop={handleStop}
+                canStop={!!abortController || !!streamingMessageId}
+              />
+              
+              {/* File Upload Icon */}
+              <div className="absolute bottom-4 left-2">
+                <FileUploadIcon onFileUpload={handleFileUpload} />
+              </div>
             </div>
           </div>
         </div>
