@@ -68,3 +68,13 @@ root/
 ├── vite.config.ts
 └── netlify.toml               # Deployment config (Netlify)
 ```
+
+---
+
+## 🧠 Fellowship & Acknowledgments
+
+- Supported by Elmhurst University's **Honors Summer Research Fellowship**
+
+- Advised by **Dr. Jensen** (Computer Science Department)
+
+- Inspired by real student challenges in CS I and CS II courses
