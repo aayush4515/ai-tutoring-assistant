@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Send } from 'lucide-react';
+import { Send, Square } from 'lucide-react';
 
-const ChatInput = ({ onSendMessage, disabled }) => {
+const ChatInput = ({ onSendMessage, disabled, onStop, canStop }) => {
   const [message, setMessage] = useState('');
 
   const handleSubmit = (e) => {
@@ -20,7 +20,21 @@ const ChatInput = ({ onSendMessage, disabled }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-end gap-2">
+    <div className="space-y-3">
+      {/* Stop Button */}
+      {canStop && (
+        <div className="flex justify-center">
+          <button
+            onClick={onStop}
+            className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-full hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition-colors text-sm font-medium"
+          >
+            <Square className="w-4 h-4" />
+            Stop
+          </button>
+        </div>
+      )}
+      
+      <form onSubmit={handleSubmit} className="flex items-end gap-2">
       <div className="flex-1 relative">
         <textarea
           value={message}
@@ -50,7 +64,8 @@ const ChatInput = ({ onSendMessage, disabled }) => {
           <Send className="w-4 h-4" />
         </button>
       </div>
-    </form>
+      </form>
+    </div>
   );
 };
 

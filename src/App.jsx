@@ -267,6 +267,8 @@ function App() {
               disabled={isLoading}
               onStop={handleStop}
               canStop={!!abortController || !!streamingMessageId}
+              onStop={handleStop}
+              canStop={!!abortController || !!streamingMessageId}
             />
             
             {/* File Upload Icon */}
