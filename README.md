@@ -26,13 +26,14 @@ Built using **OpenAI's GPT API**, **React**, **FastAPI**, and **TailwindCSS**, t
 
 ## 🛠️ Tech Stack
 
-| Layer         | Tools |
-|---------------|-------|
-| Frontend      | React, TailwindCSS |
-| Backend       | Python, FastAPI |
-| NLP/AI        | OpenAI GPT-4 (via API) |
-| Deployment    | Render (Backend), Netlify (Frontend) |
-| Miscellaneous | Markdown rendering, syntax highlighting |
+| Layer      | Tools                                                        |
+| ---------- | ------------------------------------------------------------ |
+| Frontend   | React, Vite, TailwindCSS                                     |
+| Backend    | Python, FastAPI                                              |
+| NLP Engine | OpenAI GPT-4 API                                             |
+| Features   | Markdown rendering, syntax highlighting, file upload support |
+| Deployment | Netlify (Frontend), Render (Backend)                         |
+
 
 ---
 
