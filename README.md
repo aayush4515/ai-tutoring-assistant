@@ -12,6 +12,9 @@ Built using **OpenAI's GPT API**, **React**, **FastAPI**, and **TailwindCSS**, t
 
 👉 **Try it live:** [guileless-sorbet-1bf0df.netlify.app](guileless-sorbet-1bf0df.netlify.app)
 
+[![Live Site](https://img.shields.io/badge/Live%20Demo-ai--tutor--acharya--dev-blue?style=flat-square&logo=vercel)](https://ai-tutor.acharya.dev)
+
+
 ---
 
 ## 🎯 Key Features
