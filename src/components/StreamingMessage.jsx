@@ -20,7 +20,7 @@ const StreamingMessage = ({ content, onComplete, shouldStop }) => {
       const timer = setTimeout(() => {
         setDisplayedContent(prev => prev + content[currentIndex]);
         setCurrentIndex(prev => prev + 1);
-      }, 3.2); // Adjust speed here (lower = faster)
+      }, 2.1); // Adjust speed here (lower = faster)
 
       return () => clearTimeout(timer);
     } else if (currentIndex >= content.length && !isStopped) {
