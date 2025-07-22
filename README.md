@@ -17,7 +17,6 @@ Built using **OpenAI's GPT API**, **React**, **FastAPI**, and **TailwindCSS**, t
 
 ## 🎯 Key Features
 
-- ✍️ **Custom GPT model** trained on annotated examples, concept sheets, and FAQs
 - 💬 **Interactive chat interface** with support for text and code file input
 - 🌐 **Frontend** built with React and TailwindCSS for a clean and responsive UI
 - 🔧 **Backend** built with FastAPI to connect with OpenAI’s API
