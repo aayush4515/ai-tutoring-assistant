@@ -9,6 +9,7 @@ function App() {
   const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [streamingMessageId, setStreamingMessageId] = useState(null);
+  const [abortController, setAbortController] = useState(null);
   const messagesEndRef = useRef(null);
 
   // Auto-scroll to bottom when new messages are added
@@ -35,6 +36,8 @@ function App() {
 
     setIsLoading(true);
     const botMessageId = Date.now() + 1;
+    const controller = new AbortController();
+    setAbortController(controller);
 
     try {
       const response = await fetch('/api/ask', {
@@ -43,7 +46,7 @@ function App() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ prompt }),
-        signal: AbortSignal.timeout(30000), // 30 second timeout
+        signal: controller.signal,
       });
 
       if (!response.ok) {
@@ -64,6 +67,18 @@ function App() {
       addMessage(botMessage);
       setStreamingMessageId(botMessageId);
     } catch (error) {
+      if (error.name === 'AbortError') {
+        // Request was cancelled
+        addMessage({
+          id: botMessageId,
+          type: 'bot',
+          content: 'Response cancelled by user.',
+          timestamp: new Date(),
+          isError: true
+        });
+        return;
+      }
+      
       console.error('Error sending message:', error);
       
       let errorMessage = 'Sorry, I encountered an error while processing your request. Please try again.';
@@ -85,6 +100,7 @@ function App() {
       });
     } finally {
       setIsLoading(false);
+      setAbortController(null);
     }
   };
 
@@ -107,6 +123,8 @@ function App() {
     });
 
     setIsLoading(true);
+    const controller = new AbortController();
+    setAbortController(controller);
 
     try {
       const formData = new FormData();
@@ -115,7 +133,7 @@ function App() {
       const response = await fetch('/api/upload', {
         method: 'POST',
         body: formData,
-        signal: AbortSignal.timeout(60000), // 60 second timeout for file uploads
+        signal: controller.signal,
       });
 
       if (!response.ok) {
@@ -133,6 +151,18 @@ function App() {
         timestamp: new Date()
       });
     } catch (error) {
+      if (error.name === 'AbortError') {
+        // Request was cancelled
+        addMessage({
+          id: Date.now() + 2,
+          type: 'bot',
+          content: 'File analysis cancelled by user.',
+          timestamp: new Date(),
+          isError: true
+        });
+        return;
+      }
+      
       console.error('Error uploading file:', error);
       
       let errorMessage = 'Sorry, I encountered an error while analyzing your file. Please try again.';
@@ -152,11 +182,20 @@ function App() {
       });
     } finally {
       setIsLoading(false);
+      setAbortController(null);
     }
   };
 
   // Handle streaming completion
   const handleStreamComplete = () => {
+    setStreamingMessageId(null);
+  };
+
+  // Handle stop button click
+  const handleStop = () => {
+    if (abortController) {
+      abortController.abort();
+    }
     setStreamingMessageId(null);
   };
 
@@ -226,6 +265,8 @@ function App() {
             <ChatInput 
               onSendMessage={handleSendMessage}
               disabled={isLoading}
+              onStop={handleStop}
+              canStop={!!abortController || !!streamingMessageId}
             />
             
             {/* File Upload Icon */}
