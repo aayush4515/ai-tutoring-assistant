@@ -37,9 +37,9 @@ Built using **OpenAI's GPT API**, **React**, **FastAPI**, and **TailwindCSS**, t
 
 ---
 
-## 📸 Screenshots
+## 🌐 Live Demo
 
-*(Coming soon: UI preview and sample interactions)*
+*(Coming soon)*
 
 ---
 
