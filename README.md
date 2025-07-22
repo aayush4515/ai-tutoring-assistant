@@ -1,4 +1,4 @@
-[![Live Site](https://img.shields.io/badge/Live%20Demo-ai--tutor--acharya--dev-blue?style=flat-square&logo=vercel)](guileless-sorbet-1bf0df.netlify.app)
+[![Live Site](https://img.shields.io/badge/Live%20Demo-ai--tutoring--assistant-blue?style=flat-square&logo=vercel)](guileless-sorbet-1bf0df.netlify.app)
 
 # 🧠 AI Tutoring Assistant — Python to C++ Transition
 
