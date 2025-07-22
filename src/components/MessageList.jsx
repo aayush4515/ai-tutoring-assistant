@@ -1,3 +1,6 @@
+import Message from './Message';
+import LoadingSpinner from './LoadingSpinner';
+
 const MessageList = ({ messages, isLoading, streamingMessageId, onStreamComplete }) => {
   return (
     <div className="space-y-4">
