@@ -82,8 +82,8 @@ root/
 ---
 
 ## 📬 Contact
-**Aayush Acharya**
-📧 aayushacharya1545@gmail.com
+**Aayush Acharya** </br>
+📧 aayushacharya1545@gmail.com </br>
 🔗 linkedin.com/in/aayush4515
 
 
