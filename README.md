@@ -45,10 +45,25 @@ Built using **OpenAI's GPT API**, **React**, **FastAPI**, and **TailwindCSS**, t
 ## 📦 Project Structure
 
 ```bash
-ai-tutoring-assistant/
-├── frontend/        # React + TailwindCSS chatbot interface
-├── backend/         # FastAPI routes and OpenAI integration
-├── docs/            # Concept sheets, prompt examples, FAQs
-├── data/            # Example student queries and responses
-└── README.md
+root/
+├── src/                        # React source files
+│   ├── components/            # UI components
+│   │   ├── ChatInput.jsx
+│   │   ├── FileUpload.jsx
+│   │   ├── FileUploadIcon.jsx
+│   │   ├── LoadingSpinner.jsx
+│   │   ├── Message.jsx
+│   │   ├── MessageList.jsx
+│   │   ├── StarterPrompts.jsx
+│   │   └── StreamingMessage.jsx
+│   ├── App.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   └── vite-env.d.ts
+├── index.html
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+├── vite.config.ts
+└── netlify.toml               # Deployment config (Netlify)
 ```
