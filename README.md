@@ -1,3 +1,5 @@
+[![Live Site](https://img.shields.io/badge/Live%20Demo-ai--tutor--acharya--dev-blue?style=flat-square&logo=vercel)](guileless-sorbet-1bf0df.netlify.app)
+
 # 🧠 AI Tutoring Assistant — Python to C++ Transition
 
 > A GPT-powered chatbot designed to support students transitioning from Python to C++, developed as part of Elmhurst University’s **Honors Summer Research Fellowship**.
@@ -11,9 +13,6 @@ The AI Tutoring Assistant is an intelligent chatbot that guides students through
 Built using **OpenAI's GPT API**, **React**, **FastAPI**, and **TailwindCSS**, the assistant provides an educational, non-cheating environment aligned with Elmhurst University's CS curriculum for transfer and introductory-level students.
 
 👉 **Try it live:** [guileless-sorbet-1bf0df.netlify.app](guileless-sorbet-1bf0df.netlify.app)
-
-[![Live Site](https://img.shields.io/badge/Live%20Demo-ai--tutor--acharya--dev-blue?style=flat-square&logo=vercel)](https://ai-tutor.acharya.dev)
-
 
 ---
 
