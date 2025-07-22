@@ -12,7 +12,7 @@ const StreamingMessage = ({ content, onComplete, shouldStop }) => {
   useEffect(() => {
     if (shouldStop && !isStopped) {
       setIsStopped(true);
-      onComplete();
+      // Don't call onComplete when stopped - just halt
       return;
     }
 

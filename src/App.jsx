@@ -200,6 +200,11 @@ function App() {
     }
     if (streamingMessageId) {
       setShouldStopStreaming(true);
+      // Immediately clear streaming state when stopped
+      setTimeout(() => {
+        setStreamingMessageId(null);
+        setShouldStopStreaming(false);
+      }, 100);
     }
   };
 
