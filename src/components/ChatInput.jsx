@@ -37,9 +37,9 @@ const ChatInput = ({ onSendTextPrompt, onSendFilePrompt, selectedFile, setSelect
       <div className="flex-1 relative">
         {/* Selected File Display */}
         {selectedFile && (
-          <div className="absolute top-2 left-4 right-12 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 flex items-center gap-2 z-10">
+          <div className="absolute top-2 left-4 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 flex items-center gap-2 z-10 max-w-fit">
             <FileText className="w-4 h-4 text-blue-600" />
-            <span className="text-sm text-blue-800 truncate flex-1">{selectedFile.name}</span>
+            <span className="text-sm text-blue-800">{selectedFile.name}</span>
             <button
               type="button"
               onClick={handleRemoveFile}
