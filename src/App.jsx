@@ -107,12 +107,12 @@ function App() {
   };
 
   // Handle file sending to backend
-  const handleSendFilePrompt = async (file) => {
+  const handleSendFilePrompt = async (file, userPrompt = '') => {
     // Add system message for file sending
     addMessage({
       id: Date.now(),
       type: 'system',
-      content: `Uploaded file: ${file.name}`,
+      content: `Uploaded file: ${file.name}${userPrompt ? ` with prompt: "${userPrompt}"` : ''}`,
       timestamp: new Date()
     });
 
@@ -131,6 +131,7 @@ function App() {
     try {
       const formData = new FormData();
       formData.append('file', file);
+      formData.append('user_prompt', userPrompt);
 
       const response = await fetch('/api/upload', {
         method: 'POST',

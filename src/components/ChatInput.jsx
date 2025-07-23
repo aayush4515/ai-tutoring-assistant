@@ -10,7 +10,7 @@ const ChatInput = ({ onSendTextPrompt, onSendFilePrompt, selectedFile, setSelect
     
     if (selectedFile) {
       // Send file
-      onSendFilePrompt(selectedFile);
+      onSendFilePrompt(selectedFile, message.trim());
       setMessage('');
     } else if (message.trim()) {
       // Send text message
