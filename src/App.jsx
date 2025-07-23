@@ -120,21 +120,6 @@ function App() {
       }
     });
 
-    // Add system messages for file processing
-    addMessage({
-      id: Date.now() + 1,
-      type: 'system',
-      content: `Uploading file: ${file.name}...`,
-      timestamp: new Date()
-    });
-
-    addMessage({
-      id: Date.now() + 2,
-      type: 'system',
-      content: 'Analyzing your file...',
-      timestamp: new Date()
-    });
-
     setIsLoading(true);
     const controller = new AbortController();
     setAbortController(controller);
@@ -159,7 +144,7 @@ function App() {
       
       // Add bot analysis response
       addMessage({
-        id: Date.now() + 3,
+        id: Date.now() + 1,
         type: 'bot',
         content: data.response,
         timestamp: new Date()
@@ -168,7 +153,7 @@ function App() {
       if (error.name === 'AbortError') {
         // Request was cancelled
         addMessage({
-          id: Date.now() + 2,
+          id: Date.now() + 1,
           type: 'bot',
           content: 'File analysis cancelled by user.',
           timestamp: new Date(),
@@ -188,7 +173,7 @@ function App() {
       }
       
       addMessage({
-        id: Date.now() + 3,
+        id: Date.now() + 1,
         type: 'bot',
         content: errorMessage,
         timestamp: new Date(),

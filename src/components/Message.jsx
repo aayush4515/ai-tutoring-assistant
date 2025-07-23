@@ -207,9 +207,9 @@ const Message = ({ message, isStreaming = false, onStreamComplete, shouldStopStr
             <div>
               {/* Show attached file if present */}
               {attachedFile && (
-                <div className="mb-2 flex items-center gap-2 p-2 bg-blue-500 rounded-lg">
+                <div className="mb-2 flex items-center gap-2 p-2 bg-blue-500 bg-opacity-20 rounded-lg">
                   {getFileIcon(attachedFile.type)}
-                  <span className="text-sm text-white">{attachedFile.name}</span>
+                  <span className="text-sm text-blue-800">{attachedFile.name}</span>
                 </div>
               )}
               <p className="whitespace-pre-wrap">{content}</p>
