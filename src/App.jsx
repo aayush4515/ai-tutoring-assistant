@@ -108,17 +108,28 @@ function App() {
 
   // Handle file sending to backend
   const handleSendFilePrompt = async (file, userPrompt = '') => {
-    // Add system message for file sending
+    // Add user message showing file attachment and prompt
     addMessage({
       id: Date.now(),
       type: 'system',
-      content: `Uploaded file: ${file.name}${userPrompt ? ` with prompt: "${userPrompt}"` : ''}`,
+      content: userPrompt || 'Analyze this file',
+      timestamp: new Date(),
+      attachedFile: {
+        name: file.name,
+        type: file.name.toLowerCase().endsWith('.py') ? 'python' : 'cpp'
+      }
+    });
+
+    // Add system messages for file processing
+    addMessage({
+      id: Date.now() + 1,
+      type: 'system',
+      content: `Uploading file: ${file.name}...`,
       timestamp: new Date()
     });
 
-    // Add analyzing message
     addMessage({
-      id: Date.now() + 1,
+      id: Date.now() + 2,
       type: 'system',
       content: 'Analyzing your file...',
       timestamp: new Date()
@@ -148,7 +159,7 @@ function App() {
       
       // Add bot analysis response
       addMessage({
-        id: Date.now() + 2,
+        id: Date.now() + 3,
         type: 'bot',
         content: data.response,
         timestamp: new Date()
@@ -177,7 +188,7 @@ function App() {
       }
       
       addMessage({
-        id: Date.now() + 2,
+        id: Date.now() + 3,
         type: 'bot',
         content: errorMessage,
         timestamp: new Date(),

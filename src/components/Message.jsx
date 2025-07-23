@@ -4,10 +4,22 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { User, Bot, Info } from 'lucide-react';
+import { User, Bot, Info, FileText, Code2 } from 'lucide-react';
+
+// Helper function to get file icon based on type
+const getFileIcon = (fileType) => {
+  switch (fileType) {
+    case 'python':
+      return <FileText className="w-4 h-4 text-blue-600" />;
+    case 'cpp':
+      return <Code2 className="w-4 h-4 text-green-600" />;
+    default:
+      return <FileText className="w-4 h-4 text-gray-600" />;
+  }
+};
 
 const Message = ({ message, isStreaming = false, onStreamComplete, shouldStopStreaming = false }) => {
-  const { type, content, timestamp, isError } = message;
+  const { type, content, timestamp, isError, attachedFile } = message;
 
   // Custom renderer for code blocks
   const renderers = {
@@ -192,7 +204,16 @@ const Message = ({ message, isStreaming = false, onStreamComplete, shouldStopStr
           {type === 'system' ? (
             <span>{content}</span>
           ) : type === 'user' ? (
-            <p className="whitespace-pre-wrap">{content}</p>
+            <div>
+              {/* Show attached file if present */}
+              {attachedFile && (
+                <div className="mb-2 flex items-center gap-2 p-2 bg-blue-500 rounded-lg">
+                  {getFileIcon(attachedFile.type)}
+                  <span className="text-sm text-white">{attachedFile.name}</span>
+                </div>
+              )}
+              <p className="whitespace-pre-wrap">{content}</p>
+            </div>
           ) : (
             isStreaming ? (
             <div className={`prose prose-sm max-w-none ${isError ? 'text-red-800' : 'text-gray-800'} prose-p:mb-6 prose-headings:mb-4 prose-headings:mt-8 prose-headings:font-semibold prose-ul:mb-6 prose-ol:mb-6 prose-li:mb-2 prose-pre:mb-6 prose-blockquote:mb-6 prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-strong:font-semibold prose-table:my-6 prose-hr:my-8 prose-hr:border-gray-300`}>

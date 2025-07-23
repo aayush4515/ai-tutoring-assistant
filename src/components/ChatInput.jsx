@@ -1,5 +1,20 @@
 import React, { useState } from 'react';
-import { Send, Square, X, FileText } from 'lucide-react';
+import { Send, Square, X, FileText, Code2 } from 'lucide-react';
+
+// Helper function to get file icon based on extension
+const getFileIcon = (filename) => {
+  const extension = filename.toLowerCase().split('.').pop();
+  switch (extension) {
+    case 'py':
+      return <FileText className="w-4 h-4 text-blue-600" />;
+    case 'cpp':
+    case 'cc':
+    case 'cxx':
+      return <Code2 className="w-4 h-4 text-green-600" />;
+    default:
+      return <FileText className="w-4 h-4 text-gray-600" />;
+  }
+};
 
 const ChatInput = ({ onSendTextPrompt, onSendFilePrompt, selectedFile, setSelectedFile, disabled, onStop, canStop }) => {
   const [message, setMessage] = useState('');
@@ -38,7 +53,7 @@ const ChatInput = ({ onSendTextPrompt, onSendFilePrompt, selectedFile, setSelect
         {/* Selected File Display */}
         {selectedFile && (
           <div className="absolute top-2 left-4 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2 flex items-center gap-2 z-10 max-w-fit">
-            <FileText className="w-4 h-4 text-blue-600" />
+            {getFileIcon(selectedFile.name)}
             <span className="text-sm text-blue-800">{selectedFile.name}</span>
             <button
               type="button"
