@@ -190,10 +190,7 @@ const Message = ({ message, isStreaming = false, onStreamComplete, shouldStopStr
         {/* Message Bubble */}
         <div className={styles.bubble}>
           {type === 'system' ? (
-            <div className="flex items-center gap-2">
-              {styles.icon}
-              <span>{content}</span>
-            </div>
+            <span>{content}</span>
           ) : type === 'user' ? (
             <p className="whitespace-pre-wrap">{content}</p>
           ) : (
