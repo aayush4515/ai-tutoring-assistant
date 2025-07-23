@@ -11,6 +11,7 @@ function App() {
   const [streamingMessageId, setStreamingMessageId] = useState(null);
   const [abortController, setAbortController] = useState(null);
   const [shouldStopStreaming, setShouldStopStreaming] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
   const messagesEndRef = useRef(null);
 
   // Auto-scroll to bottom when new messages are added
@@ -24,7 +25,7 @@ function App() {
   };
 
   // Send text prompt to backend
-  const handleSendMessage = async (prompt) => {
+  const handleSendTextPrompt = async (prompt) => {
     if (!prompt.trim()) return;
 
     // Add user message
@@ -105,9 +106,9 @@ function App() {
     }
   };
 
-  // Handle file upload
-  const handleFileUpload = async (file) => {
-    // Add system message for file upload
+  // Handle file sending to backend
+  const handleSendFilePrompt = async (file) => {
+    // Add system message for file sending
     addMessage({
       id: Date.now(),
       type: 'system',
@@ -184,7 +185,13 @@ function App() {
     } finally {
       setIsLoading(false);
       setAbortController(null);
+      setSelectedFile(null);
     }
+  };
+
+  // Handle file selection (not sending)
+  const handleFileSelect = (file) => {
+    setSelectedFile(file);
   };
 
   // Handle streaming completion
@@ -210,7 +217,7 @@ function App() {
 
   // Handle starter prompt click
   const handleStarterPromptClick = (prompt) => {
-    handleSendMessage(prompt);
+    handleSendTextPrompt(prompt);
   };
 
   return (
@@ -273,7 +280,10 @@ function App() {
           <div className="relative">
             {/* Chat Input */}
             <ChatInput 
-              onSendMessage={handleSendMessage}
+              onSendTextPrompt={handleSendTextPrompt}
+              onSendFilePrompt={handleSendFilePrompt}
+              selectedFile={selectedFile}
+              setSelectedFile={setSelectedFile}
               disabled={isLoading}
               onStop={handleStop}
               canStop={!!abortController || !!streamingMessageId}
@@ -281,7 +291,7 @@ function App() {
             
             {/* File Upload Icon */}
             <div className="absolute bottom-4 left-2">
-              <FileUploadIcon onFileUpload={handleFileUpload} />
+              <FileUploadIcon onFileSelect={handleFileSelect} />
             </div>
           </div>
         </div>

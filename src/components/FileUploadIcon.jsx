@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { Plus } from 'lucide-react';
 
-const FileUploadIcon = ({ onFileUpload }) => {
+const FileUploadIcon = ({ onFileSelect }) => {
   const [showTooltip, setShowTooltip] = useState(false);
-  const [uploadStatus, setUploadStatus] = useState(null);
 
   const allowedTypes = ['.py', '.cpp'];
   const maxFileSize = 5 * 1024 * 1024; // 5MB
@@ -29,16 +28,12 @@ const FileUploadIcon = ({ onFileUpload }) => {
       const validation = validateFile(files[0]);
       
       if (!validation.valid) {
-        setUploadStatus('error');
-        setTimeout(() => setUploadStatus(null), 3000);
+        // For now, we'll just ignore invalid files
+        // You could add error handling here if needed
         return;
       }
 
-      setUploadStatus('success');
-      onFileUpload(files[0]);
-      
-      // Clear success status after a moment
-      setTimeout(() => setUploadStatus(null), 2000);
+      onFileSelect(files[0]);
     }
     // Reset input value to allow same file selection
     e.target.value = '';
@@ -48,13 +43,7 @@ const FileUploadIcon = ({ onFileUpload }) => {
     <div className="relative">
       <label
         className={`
-          w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200
-          ${uploadStatus === 'success' 
-            ? 'bg-green-100 text-green-600' 
-            : uploadStatus === 'error'
-            ? 'bg-red-100 text-red-600'
-            : 'bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800'
-          }
+          w-10 h-10 rounded-full flex items-center justify-center cursor-pointer transition-all duration-200 bg-gray-100 text-gray-600 hover:bg-gray-200 hover:text-gray-800
         `}
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
