@@ -87,6 +87,8 @@ This frontend connects to a custom-built FastAPI backend that acts as a secure i
 
 📂 Backend GitHub Repo: aayush4515/ai-tutor-backend
 
+---
+
 ## 🧠 Fellowship & Acknowledgments
 
 - Supported by Elmhurst University's **Honors Summer Research Fellowship**
