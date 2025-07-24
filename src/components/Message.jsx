@@ -10,11 +10,11 @@ import { User, Bot, Info, FileText, Code2 } from 'lucide-react';
 const getFileIcon = (fileType) => {
   switch (fileType) {
     case 'python':
-      return <FileText className="w-5 h-5 text-white" />;
+      return <FileText className="w-4 h-4 text-blue-600" />;
     case 'cpp':
-      return <Code2 className="w-5 h-5 text-white" />;
+      return <Code2 className="w-4 h-4 text-green-600" />;
     default:
-      return <FileText className="w-5 h-5 text-white" />;
+      return <FileText className="w-4 h-4 text-gray-600" />;
   }
 };
 
@@ -207,23 +207,12 @@ const Message = ({ message, isStreaming = false, onStreamComplete, shouldStopStr
             <div>
               {/* Show attached file if present */}
               {attachedFile && (
-                <div className="mb-3 p-3 bg-gray-800 rounded-xl border border-gray-600 max-w-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                      {getFileIcon(attachedFile.type)}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-white text-sm font-medium truncate">
-                        {attachedFile.name}
-                      </div>
-                      <div className="text-gray-400 text-xs uppercase">
-                        {attachedFile.type === 'python' ? 'PYTHON' : 'C++'}
-                      </div>
-                    </div>
-                  </div>
+                <div className="mb-2 flex items-center gap-2 p-2 bg-blue-500 bg-opacity-20 rounded-lg">
+                  {getFileIcon(attachedFile.type)}
+                  <span className="text-sm text-blue-800">{attachedFile.name}</span>
                 </div>
               )}
-              {content && <p className="whitespace-pre-wrap">{content}</p>}
+              <p className="whitespace-pre-wrap">{content}</p>
             </div>
           ) : (
             isStreaming ? (
