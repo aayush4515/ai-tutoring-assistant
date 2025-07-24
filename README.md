@@ -73,6 +73,20 @@ root/
 
 ---
 
+## 🔌 Backend API
+
+This frontend connects to a custom-built FastAPI backend that acts as a secure interface to the OpenAI GPT-4 API. The backend handles:
+
+- 🔐 API key protection
+
+- 💬 Message formatting and history context
+
+- 📄 File upload processing and code extraction
+
+- 🧠 Prompt injection and static code analysis (planned)
+
+📂 Backend GitHub Repo: aayush4515/ai-tutor-backend
+
 ## 🧠 Fellowship & Acknowledgments
 
 - Supported by Elmhurst University's **Honors Summer Research Fellowship**
