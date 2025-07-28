@@ -85,7 +85,7 @@ This frontend connects to a custom-built FastAPI backend that acts as a secure i
 
 - 🧠 Prompt injection and static code analysis (planned)
 
-📂 Backend GitHub Repo: [chatbot-api](github.com/aayush4515/chatbot-api)
+📂 Backend GitHub Repo: [chatbot-api](https://github.com/aayush4515/chatbot-api)
 
 ---
 
